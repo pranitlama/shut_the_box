@@ -55,7 +55,7 @@ body{
 
 }
 .box button{
-    background:burlywood;
+    /* background:burlywood; */
     color: #000;
     font-size: larger;
     border: 1px solid darkgreen ;
@@ -69,11 +69,12 @@ body{
 }
 
 .clicked{
-    background:#6c6b76;
+    /* background:#6c6b76; */
+    background:red;
 }
 
-.box button:hover{
+/* .box button:hover{
         background-color:#6c6b76;
         border: 1px solid #6c6b76;
         color: #fff;
-}
+} */
