@@ -4,11 +4,13 @@ let box=document.querySelectorAll(".box button");
 let btn=document.getElementById("btn");
 let totaldice;
 let dicerolled=false;
-let remain=[0,1,2,3,4,5,6,7,8,9];
+let remain=[1,2,3,4,5,6,7,8,9];
 let choices=[];
 let result=0;
-let yeet;
 let clickagain=false;
+let i=0;
+let optn;
+
 
 box.forEach(option => {
     option.addEventListener("click",function(){
@@ -18,6 +20,7 @@ box.forEach(option => {
          clickagn();
          let x=parseInt(option.value);
          let y=option;
+         optn=option;
             checkotn(x,y);
         }
         else
@@ -29,24 +32,43 @@ box.forEach(option => {
 
 function game(y){
             choices.push(y);
-            remain.splice((y),1);
-            console.log(remain);
-                for(let i=0;i<choices.length;i++)
+          
+                for(let  i=0;i<choices.length;i++)
                 {
                     result+=choices[i];
+                   
                 }
                 if(result<totaldice)
                 {
                         alert("click again");
+                        remain.splice(remain.indexOf(y),1);
+                        console.log("remaining",remain);
                         clickagain=true;
                         
                 }
-               
+               else if(result>totaldice)
+               {
+                console.log(choices[i]);
+                    choices.pop();
+                    alert("the result is greater than the total dice");
+                    result=0;
+                    for(let  i=0;i<choices.length;i++)
+                    {
+                        result+=choices[i];
+                       
+                    }
+                    optn.classList.remove("clicked");
+                    optn.disabled=false;
+                    
+               }
                 else{
+                    remain.splice(remain.indexOf(y),1);
                     check();
                     remove();
+                    score();
                     clickagain=false;
                     dicerolled=false;
+                  
                 }
                 console.log("choices",choices); 
                 console.log("result",result); 
@@ -58,9 +80,10 @@ function game(y){
         function checkotn(z,w)
 {
     if(totaldice<z)
-    {
+    {   
         alert("the value is more than the dice");
     }
+  
     else{
         w.disabled=true;
         w.classList.add("clicked");
@@ -85,6 +108,8 @@ function check(){
     }
     else if(result==totaldice)
     {
+        
+        console.log("r",remain);
         dicerolled==false;
         alert("roll again");
         result=0;
@@ -105,6 +130,7 @@ function roll(){
          totaldice=d_one+d_two;
          console.log("total dice",totaldice);
          dicerolled=true;
+        
         }
 }   
 
@@ -116,6 +142,20 @@ function remove(){
         choices.pop();
     }
 }
+
+function score(){
+    let scores=0;
+    for(i=0;i<remain.length;i++)
+    {
+       scores=scores+remain[i];
+    }
+    console.log("scores",scores);
+    if(scores<dicerolled)
+    {
+     alert("game over");
+    }
+}
+
 
 
 
