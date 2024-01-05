@@ -27,6 +27,40 @@
       <button type="submit" id="btn" class="btn" onclick="roll()">
         ROLL DICE
       </button>
+      <a class="how" onclick="openhow()">How to play?</a>
+    </div>
+
+    <div class="popup" id="popup">
+      <h2 id="result"></h2>
+      <button type="button" onclick="closepopup()">Play Again</button>
+    </div>
+
+    <div class="popup howtopopup" id="howtoplay">
+      <h4 class="howtext">1)roll the two dice.</h4>
+      <h4 class="howtext">
+        2)Add the numbers on the dice together to get your roll total.
+      </h4>
+      <h4 class="howtext">
+        3)Use your roll total to flip down one or more tiles that correspond to
+        the numbers rolled.
+      </h4>
+      <h4 class="howtext">
+        4)For example, if you roll a 5 and a 3, you can choose to flip down the
+        tile numbered 8 (5 + 3) or the tiles numbered 5 and 3 individually.
+      </h4>
+      <h4 class="howtext">
+        5)If you manage to flip down all the tiles, you "shut the box" and win
+        the round.
+      </h4>
+      <h4 class="howtext">
+        6)the player's score is the sum of the numbers left standing on the
+        tiles.
+      </h4>
+      <h4 class="howtext">
+        7)The goal is to have the lowest score or flip down all the tiles.
+      </h4>
+
+      <button type="button" onclick="closehow()">OK</button>
     </div>
   </body>
   <script src="mains.js"></script>
